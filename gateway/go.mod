@@ -32,3 +32,5 @@ require (
 	golang.org/x/tools v0.0.0-20210106214847-113979e3529a // indirect
 	google.golang.org/protobuf v1.26.0 // indirect
 )
+
+replace github.com/openfaas/faas/gaetway => github.com/Intersetllarss/faas/gateway branch
