@@ -14,4 +14,4 @@ require (
 	golang.org/x/net v0.0.0-20210614182718-04defd469f4e // indirect
 )
 
-replace github.com/openfaas/faas => github.com/Intersetllarss/faas branch
+replace github.com/openfaas/faas => github.com/Intersetllarss/faas v0.0.0-20220721145320-266a5dccc484

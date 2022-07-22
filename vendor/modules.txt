@@ -1,0 +1,22 @@
+# github.com/aymerick/douceur v0.2.0
+## explicit
+github.com/aymerick/douceur/css
+github.com/aymerick/douceur/parser
+# github.com/gorilla/css v1.0.0
+## explicit
+github.com/gorilla/css/scanner
+# github.com/microcosm-cc/bluemonday v1.0.19
+## explicit; go 1.18
+github.com/microcosm-cc/bluemonday
+github.com/microcosm-cc/bluemonday/css
+# github.com/nishakm/strategy_generator v0.0.0-20190117202816-3a3fa5ef640e
+## explicit
+github.com/nishakm/strategy_generator/pkg
+# github.com/russross/blackfriday v1.6.0
+## explicit; go 1.13
+github.com/russross/blackfriday
+# golang.org/x/net v0.0.0-20210614182718-04defd469f4e
+## explicit; go 1.17
+golang.org/x/net/html
+golang.org/x/net/html/atom
+# github.com/openfaas/faas => github.com/Intersetllarss/faas v0.0.0-20220721145320-266a5dccc484
