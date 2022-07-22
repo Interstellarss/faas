@@ -22,6 +22,8 @@ type MetricOptions struct {
 	ServiceTargetLoadGauge  *prometheus.GaugeVec
 
 	ServiceMetrics *ServiceMetricOptions
+
+	//TODO: add new metrics? for
 }
 
 // ServiceMetricOptions provides RED metrics
@@ -40,6 +42,7 @@ func RegisterExporter(exporter *Exporter) {
 	})
 }
 
+//Testing
 // PrometheusHandler Bootstraps prometheus for metrics collection
 func PrometheusHandler() http.Handler {
 	return promhttp.Handler()
