@@ -12,8 +12,8 @@ import (
 	"os"
 	"time"
 
-	"github.com/openfaas/faas/gateway/pkg/middleware"
-	"github.com/openfaas/faas/gateway/types"
+	"github.com/Interstellarss/faas/gateway/pkg/middleware"
+	"github.com/Interstellarss/faas/gateway/types"
 )
 
 // MakeForwardingProxyHandler create a handler which forwards HTTP requests

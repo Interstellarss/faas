@@ -8,8 +8,8 @@ import (
 	"log"
 	"net/http"
 
-	"github.com/openfaas/faas/gateway/pkg/middleware"
-	"github.com/openfaas/faas/gateway/scaling"
+	"github.com/Interstellarss/faas/gateway/pkg/middleware"
+	"github.com/Interstellarss/faas/gateway/scaling"
 )
 
 // MakeScalingHandler creates handler which can scale a function from

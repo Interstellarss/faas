@@ -4,7 +4,7 @@
 package handlers
 
 import (
-	"github.com/openfaas/faas/gateway/pkg/middleware"
+	"github.com/Interstellarss/faas/gateway/pkg/middleware"
 	"testing"
 )
 

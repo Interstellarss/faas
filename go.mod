@@ -1,4 +1,4 @@
-module github.com/openfaas/faas
+module github.com/Interstellarss/faas
 
 go 1.17
 

@@ -17,9 +17,9 @@ import (
 
 	"log"
 
+	"github.com/Interstellarss/faas/gateway/scaling"
 	"github.com/openfaas/faas-provider/auth"
 	types "github.com/openfaas/faas-provider/types"
-	"github.com/openfaas/faas/gateway/scaling"
 	"github.com/prometheus/client_golang/prometheus"
 )
 

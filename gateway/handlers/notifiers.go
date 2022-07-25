@@ -7,8 +7,8 @@ import (
 	"strings"
 	"time"
 
-	"github.com/openfaas/faas/gateway/metrics"
-	"github.com/openfaas/faas/gateway/pkg/middleware"
+	"github.com/Interstellarss/faas/gateway/metrics"
+	"github.com/Interstellarss/faas/gateway/pkg/middleware"
 	"github.com/prometheus/client_golang/prometheus"
 )
 

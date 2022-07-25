@@ -1,4 +1,4 @@
-module github.com/openfaas/faas/gateway
+module github.com/Interstellarss/faas/gateway
 
 go 1.17
 

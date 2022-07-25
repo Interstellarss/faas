@@ -11,7 +11,7 @@ import (
 	"net/url"
 	"testing"
 
-	"github.com/openfaas/faas/gateway/pkg/middleware"
+	"github.com/Interstellarss/faas/gateway/pkg/middleware"
 )
 
 func Test_buildUpstreamRequest_Body_Method_Query(t *testing.T) {

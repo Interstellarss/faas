@@ -6,8 +6,8 @@ import (
 
 	"golang.org/x/sync/singleflight"
 
-	"github.com/openfaas/faas/gateway/pkg/middleware"
-	"github.com/openfaas/faas/gateway/probing"
+	"github.com/Interstellarss/faas/gateway/pkg/middleware"
+	"github.com/Interstellarss/faas/gateway/probing"
 )
 
 func MakeProbeHandler(prober probing.FunctionProber, cache probing.ProbeCacher, resolver middleware.BaseURLResolver, next http.HandlerFunc, defaultNamespace string) http.HandlerFunc {

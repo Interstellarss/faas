@@ -9,9 +9,9 @@ import (
 	"net/http"
 	"time"
 
-	"github.com/openfaas/faas/gateway/pkg/middleware"
-	"github.com/openfaas/faas/gateway/scaling"
-	"github.com/openfaas/faas/gateway/types"
+	"github.com/Interstellarss/faas/gateway/pkg/middleware"
+	"github.com/Interstellarss/faas/gateway/scaling"
+	"github.com/Interstellarss/faas/gateway/types"
 )
 
 // NewFunctionProber create a new scaler with the specified

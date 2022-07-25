@@ -11,12 +11,12 @@ import (
 	"net/url"
 	"strings"
 
+	"github.com/Interstellarss/faas/gateway/metrics"
+	"github.com/Interstellarss/faas/gateway/pkg/middleware"
 	"github.com/gorilla/mux"
 	ftypes "github.com/openfaas/faas-provider/types"
-	"github.com/openfaas/faas/gateway/metrics"
-	"github.com/openfaas/faas/gateway/pkg/middleware"
 
-	"github.com/openfaas/faas/gateway/scaling"
+	"github.com/Interstellarss/faas/gateway/scaling"
 )
 
 const queueAnnotation = "com.openfaas.queue"
