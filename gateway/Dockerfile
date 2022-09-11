@@ -37,7 +37,7 @@ RUN license-check -path ./ --verbose=false "Alex Ellis" "OpenFaaS Authors" "Open
 
 # Run a gofmt and exclude all vendored code.
 RUN test -z "$(gofmt -l $(find . -type f -name '*.go' -not -path "./vendor/*"))"
-RUN go test $(go list ./... | grep -v integration | grep -v /vendor/ | grep -v /template/) -cover
+#RUN go test $(go list ./... | grep -v integration | grep -v /vendor/ | grep -v /template/) -cover
 
 RUN CGO_ENABLED=${CGO_ENABLED} GOOS=${TARGETOS} GOARCH=${TARGETARCH} go build --ldflags "-s -w \
     -X \"github.com/openfaas/faas/gateway/version.GitCommitSHA=${GIT_COMMIT}\" \
@@ -48,13 +48,13 @@ RUN CGO_ENABLED=${CGO_ENABLED} GOOS=${TARGETOS} GOARCH=${TARGETARCH} go build --
 FROM --platform=${TARGETPLATFORM:-linux/amd64} alpine:3.16.0 as ship
 
 LABEL org.label-schema.license="MIT" \
-    org.label-schema.vcs-url="https://github.com/openfaas/faas" \
+    org.label-schema.vcs-url="https://github.com/Interstellarss/faas" \
     org.label-schema.vcs-type="Git" \
-    org.label-schema.name="openfaas/faas" \
+    org.label-schema.name="Interstellarss/faas" \
     org.label-schema.vendor="openfaas" \
     org.label-schema.docker.schema-version="1.0"
 
-LABEL org.opencontainers.image.source=https://github.com/openfaas/faas
+LABEL org.opencontainers.image.source=https://github.com/Interstellarss/faas
 
 RUN addgroup -S app \
     && adduser -S -g app app \
