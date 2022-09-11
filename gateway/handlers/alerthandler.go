@@ -82,7 +82,7 @@ func scaleService(alert requests.PrometheusInnerAlert, service scaling.ServiceQu
 		if getErr == nil {
 			//status := alert.Status
 			//alert.Labels.
-			log.Printf("DEBUGGING: receiving alert with name : %s", alert.Labels.AlertName)
+			//log.Printf("DEBUGGING: receiving alert with name : %s", alert.Labels.AlertName)
 			newReplicas := CalculateReplicas(alert, queryResponse.Replicas, uint64(queryResponse.MaxReplicas), queryResponse.MinReplicas, queryResponse.ScalingFactor)
 
 			log.Printf("[Scale] function=%s %d => %d.\n", serviceName, queryResponse.Replicas, newReplicas)
@@ -111,7 +111,11 @@ func CalculateReplicas(alert requests.PrometheusInnerAlert, currentReplicas uint
 		} else {
 			newReplicas = currentReplicas + step
 		}
-	} else { // Resolved event.
+	} else if alert.Labels.AlertName == "InstanceDown" && alert.Status == "firing" { // Resolved event.
+		log.Printf("DEBUGGING: receiving alert with name : %s", alert.Labels.AlertName)
+		newReplicas = uint64(currentReplicas / 2)
+	} else {
+		log.Printf("DEBUGGING: receiving alert with name : %s", alert.Labels.AlertName)
 		newReplicas = minReplicas
 	}
 
