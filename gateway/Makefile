@@ -4,7 +4,7 @@ PLATFORM := "linux/amd64,linux/arm/v7,linux/arm64"
 
 TAG?=latest
 SERVER?=docker.io
-OWNER?=alexellis2
+OWNER?=puxuan
 NAME=gateway
 
 .PHONY: build-local

@@ -80,9 +80,10 @@ func scaleService(alert requests.PrometheusInnerAlert, service scaling.ServiceQu
 	if len(serviceName) > 0 {
 		queryResponse, getErr := service.GetReplicas(serviceName, namespace)
 		if getErr == nil {
-			status := alert.Status
-
-			newReplicas := CalculateReplicas(status, queryResponse.Replicas, uint64(queryResponse.MaxReplicas), queryResponse.MinReplicas, queryResponse.ScalingFactor)
+			//status := alert.Status
+			//alert.Labels.
+			log.Printf("DEBUGGING: receiving alert with name : %s", alert.Labels.AlertName)
+			newReplicas := CalculateReplicas(alert, queryResponse.Replicas, uint64(queryResponse.MaxReplicas), queryResponse.MinReplicas, queryResponse.ScalingFactor)
 
 			log.Printf("[Scale] function=%s %d => %d.\n", serviceName, queryResponse.Replicas, newReplicas)
 			if newReplicas == queryResponse.Replicas {
@@ -99,12 +100,12 @@ func scaleService(alert requests.PrometheusInnerAlert, service scaling.ServiceQu
 }
 
 // CalculateReplicas decides what replica count to set depending on current/desired amount
-func CalculateReplicas(status string, currentReplicas uint64, maxReplicas uint64, minReplicas uint64, scalingFactor uint64) uint64 {
+func CalculateReplicas(alert requests.PrometheusInnerAlert, currentReplicas uint64, maxReplicas uint64, minReplicas uint64, scalingFactor uint64) uint64 {
 	var newReplicas uint64
 
 	step := uint64(math.Ceil(float64(maxReplicas) / 100 * float64(scalingFactor)))
 
-	if status == "firing" && step > 0 {
+	if alert.Status == "firing" && step > 0 {
 		if currentReplicas+step > maxReplicas {
 			newReplicas = maxReplicas
 		} else {

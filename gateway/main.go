@@ -101,6 +101,7 @@ func main() {
 	nilURLTransformer := middleware.TransparentURLPathTransformer{}
 	trimURLTransformer := middleware.FunctionPrefixTrimmingURLPathTransformer{}
 
+	//perhaps should not diret function when direting functions
 	if config.DirectFunctions {
 		functionURLResolver = middleware.FunctionAsHostBaseURLResolver{
 			FunctionSuffix:    config.DirectFunctionsSuffix,

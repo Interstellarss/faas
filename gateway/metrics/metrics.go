@@ -23,7 +23,7 @@ type MetricOptions struct {
 
 	ServiceMetrics *ServiceMetricOptions
 
-	//TODO: add new metrics? for
+	//TODO: add new metrics? based on GPU usage
 }
 
 // ServiceMetricOptions provides RED metrics
