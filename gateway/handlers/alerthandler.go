@@ -113,7 +113,7 @@ func CalculateReplicas(alert requests.PrometheusInnerAlert, currentReplicas uint
 		}
 	} else if alert.Labels.AlertName == "InstanceDown" && alert.Status == "firing" { // Resolved event.
 		log.Printf("DEBUGGING: receiving alert with name : %s", alert.Labels.AlertName)
-		newReplicas = uint64(currentReplicas / 2)
+		newReplicas = minReplicas
 	} else {
 		log.Printf("DEBUGGING: receiving alert with name : %s", alert.Labels.AlertName)
 		newReplicas = minReplicas
