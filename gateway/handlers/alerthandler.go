@@ -105,7 +105,7 @@ func CalculateReplicas(alert requests.PrometheusInnerAlert, currentReplicas uint
 
 	step := uint64(math.Ceil(float64(maxReplicas) / 100 * float64(scalingFactor)))
 
-	if alert.Status == "firing" && step > 0 {
+	if alert.Labels.AlertName == "APIHighInvocationRate" && alert.Status == "firing" && step > 0 {
 		if currentReplicas+step > maxReplicas {
 			newReplicas = maxReplicas
 		} else {
