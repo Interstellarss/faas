@@ -40,9 +40,9 @@ RUN test -z "$(gofmt -l $(find . -type f -name '*.go' -not -path "./vendor/*"))"
 #RUN go test $(go list ./... | grep -v integration | grep -v /vendor/ | grep -v /template/) -cover
 
 RUN CGO_ENABLED=${CGO_ENABLED} GOOS=${TARGETOS} GOARCH=${TARGETARCH} go build --ldflags "-s -w \
-    -X \"github.com/openfaas/faas/gateway/version.GitCommitSHA=${GIT_COMMIT}\" \
-    -X \"github.com/openfaas/faas/gateway/version.Version=${VERSION}\" \
-    -X github.com/openfaas/faas/gateway/types.Arch=${TARGETARCH}" \
+    -X \"github.com/Interstellarss/faas/gateway/version.GitCommitSHA=${GIT_COMMIT}\" \
+    -X \"github.com/Interstellarss/faas/gateway/version.Version=${VERSION}\" \
+    -X github.com/Interstellarss/faas/gateway/types.Arch=${TARGETARCH}" \
     -a -installsuffix cgo -o gateway .
 
 FROM --platform=${TARGETPLATFORM:-linux/amd64} alpine:3.16.0 as ship
