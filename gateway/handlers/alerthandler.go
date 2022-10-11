@@ -105,24 +105,31 @@ func CalculateReplicas(alert requests.PrometheusInnerAlert, currentReplicas uint
 
 	step := uint64(math.Ceil(float64(maxReplicas) / 100 * float64(scalingFactor)))
 
+	//step2 := uint64(math.Ceil())
+
 	if alert.Labels.AlertName == "APIHighInvocationRate" && alert.Status == "firing" && step > 0 {
 		if currentReplicas+step > maxReplicas {
 			newReplicas = maxReplicas
 		} else {
 			newReplicas = currentReplicas + step
 		}
-	} else if alert.Labels.AlertName == "InstanceDown" && alert.Status == "firing" { // Resolved event.
+	} else if alert.Labels.AlertName == "InstanceDown" && alert.Status == "firing" && step > 0 { // Resolved event.
 		log.Printf("DEBUGGING: receiving alert with name : %s", alert.Labels.AlertName)
-		if newReplicas/2 < minReplicas {
+		if currentReplicas-step < minReplicas {
 			newReplicas = minReplicas
 		} else {
-			newReplicas = newReplicas / 2
+			newReplicas = currentReplicas - minReplicas
 		}
 
-	} else {
+	} else if alert.Labels.AlertName == "RPSDown" && alert.Status == "firing" {
+		if currentReplicas-step < minReplicas {
+			newReplicas = minReplicas
+		} else {
+			newReplicas = currentReplicas - step
+		}
+	} else if alert.Labels.AlertName == "service_down" {
 		log.Printf("DEBUGGING: receiving alert with name : %s", alert.Labels.AlertName)
 		newReplicas = minReplicas
 	}
-
 	return newReplicas
 }
