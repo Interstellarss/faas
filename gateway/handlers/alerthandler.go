@@ -115,21 +115,26 @@ func CalculateReplicas(alert requests.PrometheusInnerAlert, currentReplicas uint
 		}
 	} else if alert.Labels.AlertName == "InstanceDown" && alert.Status == "firing" && step > 0 { // Resolved event.
 		log.Printf("DEBUGGING: receiving alert with name : %s", alert.Labels.AlertName)
-		if currentReplicas-step < minReplicas {
+		if currentReplicas-1 < minReplicas {
 			newReplicas = minReplicas
 		} else {
-			newReplicas = currentReplicas - minReplicas
+			newReplicas = currentReplicas - 1
 		}
 
 	} else if alert.Labels.AlertName == "RPSDown" && alert.Status == "firing" {
+		log.Printf("DEBUGGING: receiving alert with name : %s", alert.Labels.AlertName)
 		if currentReplicas-step < minReplicas {
 			newReplicas = minReplicas
 		} else {
 			newReplicas = currentReplicas - step
 		}
-	} else if alert.Labels.AlertName == "service_down" {
+	} else {
 		log.Printf("DEBUGGING: receiving alert with name : %s", alert.Labels.AlertName)
-		newReplicas = minReplicas
+		if minReplicas > 0 {
+			newReplicas = minReplicas
+		} else {
+			newReplicas = 1
+		}
 	}
 	return newReplicas
 }
